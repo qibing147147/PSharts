@@ -1,10 +1,13 @@
-import { createContext } from "./context";
+import { Line } from 'konva/lib/shapes/Line'
+import { createContext } from './context'
+import { LineAttributes } from './interface'
+import { line } from './shape'
 
-export function createRenderer(width: number, height: number) {
-  const context = createContext(width, height)
+export function createRenderer(width: number, height: number, id: HTMLDivElement | string) {
+  const context = createContext(width, height, id)
   return {
-    line: (options: any) => line(context, options),
+    line: (options: Line) => line(context, options),
     node: () => context.node,
-    ctx: () => context.ctx
+    group: () => context.group
   }
 }

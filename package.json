@@ -119,6 +119,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@types/mocha": "^9.1.0"
+    "@types/mocha": "^9.1.0",
+    "konva": "^8.3.5"
   }
 }
