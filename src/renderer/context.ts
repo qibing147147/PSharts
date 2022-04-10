@@ -1,4 +1,4 @@
-import { Context } from './interface'
+import { Context } from './type'
 import { mount } from './utils'
 import Konva from 'konva'
 
@@ -9,6 +9,7 @@ export function createContext(width: number, height: number, id: HTMLDivElement 
     height
   })
   const layer = new Konva.Layer()
+  mount(stage, layer)
   return {
     node: stage,
     group: layer
