@@ -1,5 +1,6 @@
 import { Layer } from 'konva/lib/Layer'
-import { Line } from 'konva/lib/shapes/Line'
+import { Circle, CircleConfig } from 'konva/lib/shapes/Circle'
+import { Line, LineConfig } from 'konva/lib/shapes/Line'
 import { Stage } from 'konva/lib/Stage'
 
 export interface Context {
@@ -7,6 +8,14 @@ export interface Context {
   group: Layer
 }
 
-export type TypeString = 'line'
+export interface ShapeNameMap {
+  line: Line
+  circle: Circle
+}
 
-export type ShapeOptions = Line
+export type TypeString = keyof ShapeNameMap
+
+export interface ShapeOptions {
+  line: LineConfig
+  circle: CircleConfig
+}

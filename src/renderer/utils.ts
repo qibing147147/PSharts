@@ -3,10 +3,15 @@ import { Layer } from 'konva/lib/Layer'
 import { Shape, ShapeConfig } from 'konva/lib/Shape'
 import { Stage } from 'konva/lib/Stage'
 import Konva from 'konva'
-import { ShapeOptions, TypeString } from './type'
+import { ShapeNameMap, ShapeOptions, TypeString } from './type'
 
 const shapeConstructorMap = {
+  line: Konva.Line,
+  circle: Konva.Circle
+}
+interface shapeConstructorMapType {
   line: Konva.Line
+  circle: Konva.Circle
 }
 
 export function createCanvasElement(width: number, height: number): HTMLCanvasElement {
@@ -22,6 +27,7 @@ export function mount(parent: Stage | Layer, child: Layer & (Group | Shape<Shape
   }
 }
 
-export function createShape(type: TypeString, options: ShapeOptions): any {
+// TODO: shape的返回类型问题
+export function createShape<K extends keyof ShapeNameMap>(type: K, options: ShapeOptions[K]): any {
   return new shapeConstructorMap[type](options)
 }

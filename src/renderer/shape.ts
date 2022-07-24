@@ -1,14 +1,18 @@
-import { Context, ShapeOptions, TypeString } from './type'
-import { Line } from 'konva/lib/shapes/Line'
+import { Context, ShapeNameMap, ShapeOptions, TypeString } from './type'
+import { Line, LineConfig } from 'konva/lib/shapes/Line'
 import { createShape, mount } from './utils'
 
-export function shape(type: TypeString, context: Context, options: ShapeOptions): any {
+export function shape<K extends keyof ShapeNameMap>(
+  type: K,
+  context: Context,
+  options: ShapeOptions[K]
+): ShapeNameMap[K] {
   const { group } = context
   const shape = createShape(type, options)
   mount(group, shape)
   return shape
 }
 
-export function line(context: Context, options: Line): any {
+export function line(context: Context, options: LineConfig): any {
   return shape('line', context, options)
 }
