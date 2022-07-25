@@ -4,14 +4,17 @@ import { Shape, ShapeConfig } from 'konva/lib/Shape'
 import { Stage } from 'konva/lib/Stage'
 import Konva from 'konva'
 import { ShapeNameMap, ShapeOptions, TypeString } from './type'
+import { Line, LineConfig } from 'konva/lib/shapes/Line'
+import { Circle, CircleConfig } from 'konva/lib/shapes/Circle'
 
 const shapeConstructorMap = {
   line: Konva.Line,
-  circle: Konva.Circle
+  circle: Konva.Circle,
+  rect: Konva.Rect
 }
 interface shapeConstructorMapType {
-  line: Konva.Line
-  circle: Konva.Circle
+  line: Line<LineConfig>
+  circle: Shape<CircleConfig>
 }
 
 export function createCanvasElement(width: number, height: number): HTMLCanvasElement {
