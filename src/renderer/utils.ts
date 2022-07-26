@@ -34,3 +34,5 @@ export function mount(parent: Stage | Layer, child: Layer & (Group | Shape<Shape
 export function createShape<K extends keyof ShapeNameMap>(type: K, options: ShapeOptions[K]): any {
   return new shapeConstructorMap[type](options)
 }
+
+export function applyTransform(group: Layer, type: TransformType) {}
